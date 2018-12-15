@@ -1,0 +1,11 @@
+<REHConfig>
+	<Database>
+		<Server>xxx.xxx.xxx.xxx</Server>
+		<Database>yyyy</Database>
+		<Username>yyyy</Username>
+		<Password>yyyy</Password>
+	</Database>
+	<Paths>
+		<DocumentRoot>http://www.michaelstoddart.org/reh</DocumentRoot>
+	</Paths>
+</REHConfig>
