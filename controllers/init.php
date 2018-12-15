@@ -18,7 +18,7 @@ if(!isset($xml))echo "$xml not set";
 $PathsXML = $xml->Paths;
 $GLOBALS['DOCUMENT_ROOT'] = $PathsXML->DocumentRoot;
 
-require_once($GLOBALS['FILE_SYSTEM_ROOT']."/config/version.php");
+//require_once($GLOBALS['FILE_SYSTEM_ROOT']."/controllers/version.php");
 
 //echo $PathsXML->DocumentRoot."\n";
 
