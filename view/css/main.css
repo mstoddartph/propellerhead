@@ -1,0 +1,142 @@
+#window
+{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	height: 600px;
+	border: 1px solid blue;
+}
+
+#header
+{
+	margin: auto;
+}
+
+#header h1
+{
+	text-align: center;
+}
+
+#content
+{
+	margin: auto;
+}
+
+#content p
+{
+	margin-top: : 15px;
+	margin-bottom: 25px;
+	margin-left: 25%;
+	margin-right: 25%;
+	font-size: small;
+}
+
+
+#customerTable 
+{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customerTable td, #customerTable th 
+{
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: top;
+}
+
+#customerTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#customerTable tr:hover {background-color: #ddd;}
+
+#customerTable th 
+{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: left;
+    background-color: #4caf50;
+    color: white;
+}
+
+
+#customerDetail 
+{
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+}
+
+#customerDetail td 
+{
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: top;
+}
+
+#customerDetail .title
+{
+	background-color: #505050;
+	color: #ffffff;
+	font-weight: 600;
+	width: 20%;
+}
+
+#customerDetail tr:nth-child(even){background-color: #f2f2f2;}
+
+#customerDetail tr:hover {background-color: #ddd;}
+
+/*#customerDetail th {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}*/
+
+
+#note {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: x-small;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+}
+
+#note td
+{
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: top;
+}
+
+#note .title
+{
+	background-color: #505050;
+	color: #ffffff;
+	font-weight: 600;
+	width: 20%;	
+}
+
+#note tr:nth-child(even){background-color: #f2f2f2;}
+
+#note tr:hover {background-color: #ddd;}
+
+
+.button
+{
+	width: 120px;
+	height: 40px;
+	margin: auto;
+	margin-top: 50px;
+	background-color: #4caf50;
+	padding: 10px;
+	font-size: small;
+	text-align: center;
+}
+
+.buttonHover{background-color: #7cd070;}

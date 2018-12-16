@@ -27,4 +27,13 @@ $GLOBALS['DOCUMENT_ROOT'] = $PathsXML->DocumentRoot;
 require_once($GLOBALS['FILE_SYSTEM_ROOT']."/model/classes/database/Database.php");
 if(!isset($xml->Database))echo "$xml->Database not set";
 $databaseXML = $xml->Database;
+
+//echo ($databaseXML->Server . "/" . $databaseXML->Database . "/" . $databaseXML->Username . "/" . $databaseXML->Password);
+
 $GLOBALS['DATABASE'] = new Database($databaseXML->Server,$databaseXML->Database,$databaseXML->Username,$databaseXML->Password);
+
+require_once($GLOBALS['FILE_SYSTEM_ROOT']."/model/classes/StatusTextArray.php");
+
+$anArray = new StatusTextArray();
+$GLOBALS['STATUS_ITEMS'] = $anArray->getStatusItems();
+//print_r($anArray);
