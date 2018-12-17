@@ -98,6 +98,11 @@
     color: white;
 }*/
 
+#addCustomerInformation
+{
+    width: 100%;
+}
+
 
 #note {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -125,6 +130,12 @@
 #note tr:nth-child(even){background-color: #f2f2f2;}
 
 #note tr:hover {background-color: #ddd;}
+
+.note_text
+{
+    width:100%;
+    height:;
+}
 
 
 .button

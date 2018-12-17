@@ -26,6 +26,16 @@ class CustomerData
 
 	}
 
+	public function createCustomer($status, $information)
+	{
+		$database = $GLOBALS['DATABASE'];
+		$datenow = new DateTime('now'); 
+		$datenowStr = $datenow->format("Y-m-d H:i");
+		$sql = "insert into customers (status,creationDate,information) values (".$status.",'".$datenowStr."','".$information."')";
+		echo "$sql";
+		$database->ExecuteSQL($sql);		
+	}
+
 	public function getCustomers()
 	{
 		return ($this->CustomerDataItems);

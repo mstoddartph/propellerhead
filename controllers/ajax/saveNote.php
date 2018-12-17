@@ -13,7 +13,8 @@ $noteText = $_POST['Note'];
 
 
 $customerData = new CustomerData();
-$customerData->saveNote($customer_id,$noteText);
+$customerData->saveNote($customer_id,nl2br($noteText));
+//echo (json_encode($noteText));
 
 
 //$customer = $customerData->getCustomer($customer_id);

@@ -52,6 +52,45 @@ function loadCustomersCallback(data)
 function addCustomer()
 {
 	console.log("addCustomer");
+
+	var statusSelectHTML = "<select id='customer_status'>";
+//	console.log(statusItemsObj);
+	$.each(statusItemsObj,function(key,value)
+		{
+		statusSelectHTML+="<option value=" + key + ">" + value + "</option>";
+		});
+	statusSelectHTML += "</select>";
+//	alert(statusSelectHTML);
+
+
+
+	var customerDetail = "<p>Fill in the fields below and click <b>Create</b> to add a new customer.</p>";
+	customerDetail += "<table id='customerDetail'>";
+//	customerDetail += "<tr><td class='title'>CustomerID</td><td>"+customer.customer_id+"</td></tr>";
+	customerDetail += "<tr><td class='title'>Status</td><td>"+statusSelectHTML+"</td></tr>";
+	customerDetail += "<tr><td class='title'>Information</td><td><input id='addCustomerInformation' type='text' /></td></tr>";
+	customerDetail += "</table>";
+	customerDetail += "<div id='addCustomerCancelButton' class='button'>Cancel</div>";
+	customerDetail += "<div id='addCustomerButton' class='button'>Create</div>";
+
+	$("#content").html(customerDetail);
+
+	$("#addCustomerButton").hover(function(){$(this).addClass("buttonHover");},function(){$(this).removeClass("buttonHover");});
+	$("#addCustomerButton").click(createCustomer);
+
+	$("#addCustomerCancelButton").hover(function(){$(this).addClass("buttonHover");},function(){$(this).removeClass("buttonHover");});
+	$("#addCustomerCancelButton").click(loadCustomers);
+
+}
+
+function createCustomer()
+{
+	console.log("createCustomer");
+	status = $("#customer_status").children('option:selected').val();
+	information = $("#addCustomerInformation").val();
+//	alert (status);
+//	alert ($("#addCustomerInformation").val());
+	$.post('controllers/ajax/createCustomer.php',{Status: status, Information: information},loadCustomers);	
 }
 
 
@@ -88,11 +127,15 @@ function showCustomerCallback(data)
 	}
 
 	customerDetail += "</table>";
-
+	customerDetail += "<div id='showCustomerBackButton' class='button'>Back</div>";
 	customerDetail += "<div id='addNoteButton' class='button'>Add Note</div>";
 	$("#content").html(customerDetail);
+
 	$("#addNoteButton").hover(function(){$(this).addClass("buttonHover");},function(){$(this).removeClass("buttonHover");});
 	$("#addNoteButton").click(function(){addNote(customer.customer_id);});
+
+	$("#showCustomerBackButton").hover(function(){$(this).addClass("buttonHover");},function(){$(this).removeClass("buttonHover");});
+	$("#showCustomerBackButton").click(loadCustomers);
 }
 
 function addNote(customer)
@@ -103,14 +146,6 @@ function addNote(customer)
 	$.post('controllers/ajax/showCustomer.php',{CustomerID: customer},AddNoteCallback);	
 //	console.log("hello" + customer);
 
-	/*var statusSelectHTML = "<select id=note_status>";
-	console.log(statusItemsObj);
-	$.each(statusItemsObj,function(key,value)
-		{
-		statusSelectHTML+="<option value=" + key + ">" + value + "</option>";
-		});
-	statusSelectHTML += "</select>";*/
-//	alert(statusSelectHTML);
 }
 
 function AddNoteCallback(data)
@@ -133,10 +168,23 @@ function AddNoteCallback(data)
 	$("#content").html(noteHTML);
 
 	$("#addNoteCancelButton").hover(function(){$(this).addClass("buttonHover");},function(){$(this).removeClass("buttonHover");});
-	$("#addNoteCancelButton").click(function(){showCustomer});
+	$("#addNoteCancelButton").click(function(){showCustomerFromID(customer.customer_id)});
 
 	$("#addNoteSaveButton").hover(function(){$(this).addClass("buttonHover");},function(){$(this).removeClass("buttonHover");});
 	$("#addNoteSaveButton").click(function(){addNoteSave(customer.customer_id)});
+
+
+	$('#noteText').keyup( function() // Bodge to disable newlines
+	{
+		$(this).val( $(this).val().replace( /\r?\n/gi, ' ' ) );
+	});
+}
+
+function showCustomerFromID(CustomerID)
+{
+	console.log("showCustomerFromID " + CustomerID);
+	$.post('controllers/ajax/showCustomer.php',{CustomerID: CustomerID},showCustomerCallback);	
+
 }
 
 function addNoteSave(customer)
